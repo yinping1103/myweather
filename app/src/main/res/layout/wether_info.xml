@@ -104,6 +104,19 @@
                 android:text="湿度:51%"
                 android:textColor="@android:color/white"
                 android:textSize="15.0sp"/>
+            <!--当前温度-->
+            <TextView
+                android:id="@+id/temperature_now"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/humidity"
+                android:layout_marginLeft="15.0dp"
+                android:singleLine="true"
+                android:text="当前温度: 5℃"
+                android:textColor="@android:color/white"
+                android:textSize="15.0sp"/>
+
             <!--PM2.5整体信息-->
             <LinearLayout
                 android:id="@+id/pm2.5_content"
@@ -144,7 +157,7 @@
                             android:textSize="30.0sp" />
                     </LinearLayout>
                     <!--PM图片-->
-                    <ImageView
+                    <ImageViews
                         android:id="@+id/pm2.5_image"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -195,16 +208,17 @@
                 android:textSize="20.0sp"/>
             <!--温度范围-->
             <TextView
-            android:id="@+id/temperature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/week_today"
-            android:layout_marginLeft="5.0dp"
-            android:layout_toRightOf="@id/weather_image"
-            android:singleLine="true"
-            android:text=" -2℃~7℃"
-            android:textColor="@android:color/white"
-            android:textSize="30.0sp"/>
+
+                android:id="@+id/temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/week_today"
+                android:layout_marginLeft="5.0dp"
+                android:layout_toRightOf="@id/weather_image"
+                android:singleLine="true"
+                android:text=" -2℃~7℃"
+                android:textColor="@android:color/white"
+                android:textSize="30.0sp"/>
             <!--天气状况-->
             <TextView
                 android:id="@+id/climate"
@@ -229,9 +243,12 @@
                 android:text="微风"
                 android:textColor="@android:color/white"
                 android:textSize="20.0sp"/>
+            
 
         </RelativeLayout>
+
         <!--一周天气信息-->
+
         <!--其他广告-->
     </LinearLayout>
 
