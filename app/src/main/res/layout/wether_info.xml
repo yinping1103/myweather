@@ -149,6 +149,7 @@
                             android:textSize="12.0sp" />
                         <!--PM值-->
                         <TextView
+                            android:id="@+id/pm_data"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:singleLine="true"
@@ -157,8 +158,8 @@
                             android:textSize="30.0sp" />
                     </LinearLayout>
                     <!--PM图片-->
-                    <ImageViews
-                        android:id="@+id/pm2.5_image"
+                    <ImageView
+                        android:id="@+id/pm25_img"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5.0dp"
@@ -166,7 +167,7 @@
                 </LinearLayout>
                 <!--污染等级-->
                 <TextView
-                    android:id="@+id/pm2.5_quality"
+                    android:id="@+id/pm25_quality"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -189,7 +190,7 @@
             <!--今日天气图片事例-->
             <ImageView
 
-                android:id="@+id/weather_image"
+                android:id="@+id/weather_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -201,7 +202,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="5.0dp"
-                android:layout_toRightOf="@id/weather_image"
+                android:layout_toRightOf="@id/weather_img"
                 android:singleLine="true"
                 android:text=" 今天 星期三"
                 android:textColor="@android:color/white"
@@ -214,7 +215,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/week_today"
                 android:layout_marginLeft="5.0dp"
-                android:layout_toRightOf="@id/weather_image"
+                android:layout_toRightOf="@id/weather_img"
                 android:singleLine="true"
                 android:text=" -2℃~7℃"
                 android:textColor="@android:color/white"
@@ -226,7 +227,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/temperature"
                 android:layout_marginLeft="5.0dp"
-                android:layout_toRightOf="@id/weather_image"
+                android:layout_toRightOf="@id/weather_img"
                 android:singleLine="true"
                 android:text="多云转晴"
                 android:textColor="@android:color/white"
@@ -238,7 +239,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/climate"
                 android:layout_marginLeft="5.0dp"
-                android:layout_toRightOf="@id/weather_image"
+                android:layout_toRightOf="@id/weather_img"
                 android:singleLine="true"
                 android:text="微风"
                 android:textColor="@android:color/white"

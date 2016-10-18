@@ -1,4 +1,4 @@
-package cn.pku.edu.ag.bean;
+package cn.edu.pku.yinping.bean;
 
 /**
  * Created by ag on 10/17/16.
@@ -22,8 +22,8 @@ public class TodayWeather {
         return city;
     }
 
-    public String getDatetime() {
-        return date;
+    public String getUpdatetime() {
+        return updatetime;
     }
 
     public String getWendu() {
@@ -36,6 +36,68 @@ public class TodayWeather {
 
     public String getPm25() {
         return pm25;
+    }
+
+    public String getQuality() {
+        return quality;
+    }
+
+    public String getFengxiang() {
+        return fengxiang;
+    }
+
+    public String getFengli() {
+        return fengli;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getHigh() {
+        return high;
+    }
+
+    public String getLow() {
+        return low;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setUpdatetime(String updatetime) {
+        this.updatetime = updatetime;
+    }
+
+    public void setWendu(String wendu) {
+        this.wendu = wendu;
+    }
+
+    public void setShidu(String shidu) {
+        this.shidu = shidu;
+    }
+
+    public void setPm25(String pm25) {
+        this.pm25 = pm25;
+    }
+
+    public void setQuality(String quality) {
+        this.quality = quality;
+    }
+
+    public void setFengxiang(String fengxiang) {
+        this.fengxiang = fengxiang;
+    }
+
+    public void setFengli(String fengli) {
+        this.fengli = fengli;
     }
 
     public void setDate(String date) {
@@ -54,6 +116,7 @@ public class TodayWeather {
         this.type = type;
     }
 
+
     @Override
     public String toString() {
         return "TodayWeather{" +
@@ -70,20 +133,6 @@ public class TodayWeather {
                 ", low='" + low + '\'' +
                 ", type='" + type + '\'' +
                 '}';
-    }
-
-    void updateTodayWeather(TodayWeather todayWeather){
-        city_name_Tv.setText(todayWeather.getCity()+"天气");
-        cityTv.setText(todayWeather.getCity());
-        timeTv.setText(todayWeather.getUpdatetime()+ "发布");
-        humidityTv.setText("湿度："+todayWeather.getShidu());
-        pmDataTv.setText(todayWeather.getPm25());
-        pmQualityTv.setText(todayWeather.getQuality());
-        weekTv.setText(todayWeather.getDate());
-        temperatureTv.setText(todayWeather.getHigh()+"~"+todayWeather.getLow());
-        climateTv.setText(todayWeather.getType());
-        windTv.setText("风力:"+todayWeather.getFengli());
-        Toast.makeText(MainActivity.this,"更新成功！",Toast.LENGTH_SHORT).show();
     }
 
 }

@@ -1,4 +1,4 @@
-package cn.pku.edu.ag.util;
+package cn.edu.pku.yinping.util;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
