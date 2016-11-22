@@ -9,6 +9,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,10 @@ import java.net.URL;
 import cn.edu.pku.yinping.bean.TodayWeather;
 import cn.edu.pku.yinping.util.NetUtil;
 
+import static android.R.attr.visible;
+import static cn.edu.pku.yinping.myweather.R.id.title_update_btn;
+import static cn.edu.pku.yinping.myweather.R.id.title_update_progress;
+
 
 /**
  * Created by ag on 9/20/16.
@@ -37,8 +42,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private static final int UPDATE_TODAY_WEATHER = 1;
 
     private ImageView mUpdateBtn;
-
     private ImageView mCitySelect;
+    private ProgressBar mtitle_update_progress;
 
 
     private TextView cityTv, timeTv, humidityTv, weekTv, pmDataTv,
@@ -63,8 +68,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wether_info);
 
-        mUpdateBtn = (ImageView) findViewById(R.id.title_update_btn);
+        mUpdateBtn = (ImageView) findViewById(title_update_btn);
         mUpdateBtn.setOnClickListener(this);
+        mtitle_update_progress = (ProgressBar) findViewById(title_update_progress);
+
 
         if (NetUtil.getNetworkState(this) != NetUtil.NETWORN_NONE) {
             Log.d("myweather", "网络OK");
@@ -116,7 +123,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         }
 
-        if (view.getId() == R.id.title_update_btn) {
+        if (view.getId() == title_update_btn) {
+
+            mtitle_update_progress.setVisibility(View.VISIBLE);
+            mUpdateBtn.setVisibility(View.INVISIBLE);
+
 
             SharedPreferences sharedPreferences = getSharedPreferences("config", MODE_PRIVATE);
             String cityCode = sharedPreferences.getString("main_city_code", "101010100");
@@ -314,6 +325,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         climateTv.setText(todayWeather.getType());
         windTv.setText("风力:" + todayWeather.getFengli());
         Toast.makeText(MainActivity.this, "更新成功！", Toast.LENGTH_SHORT).show();
+
+        mtitle_update_progress.setVisibility(View.GONE);
+        mUpdateBtn.setVisibility(View.VISIBLE);
     }
 
 }

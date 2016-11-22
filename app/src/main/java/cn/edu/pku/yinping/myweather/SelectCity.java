@@ -61,6 +61,8 @@ public class SelectCity extends Activity implements View.OnClickListener{
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Toast.makeText(SelectCity.this, "Clicked"+ i, Toast.LENGTH_SHORT).show();
             selectedCityCode = cityNumberList[i];
+
+            back();
         }
         });
     }
@@ -69,16 +71,20 @@ public class SelectCity extends Activity implements View.OnClickListener{
     public void onClick(View v){
         switch (v.getId()){
             case R.id.title_back:
-                Intent i = new Intent(this, MainActivity.class);
-                i.putExtra("cityCode", "selectedCityCode");
-                setResult(RESULT_OK, i);
-
-                finish();
+                back();
                 break;
             default:
                 break;
         }
 
+    }
+
+    private void back(){
+        Intent i = new Intent(this, MainActivity.class);
+        i.putExtra("cityCode", "selectedCityCode");
+        setResult(RESULT_OK, i);
+
+        finish();
     }
 
 }
