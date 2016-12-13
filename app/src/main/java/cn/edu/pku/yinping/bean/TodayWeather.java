@@ -11,12 +11,12 @@ public class TodayWeather {
     private String shidu;
     private String pm25;
     private String quality;
-    private String fengxiang;
-    private String fengli;
     private String date;
     private String high;
     private String low;
     private String type;
+    private String fengxiang;
+    private String fengli;
 
     public String getCity() {
         return city;
@@ -26,13 +26,11 @@ public class TodayWeather {
         return updatetime;
     }
 
-    public String getWendu() {
-        return wendu;
-    }
-
     public String getShidu() {
         return shidu;
     }
+
+    public String getWendu() { return wendu; }
 
     public String getPm25() {
         return pm25;
@@ -42,6 +40,16 @@ public class TodayWeather {
         return quality;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public String getHigh() { return high; }
+
+    public String getLow() { return low; }
+
+    public String getType() { return type; }
+
     public String getFengxiang() {
         return fengxiang;
     }
@@ -50,23 +58,8 @@ public class TodayWeather {
         return fengli;
     }
 
-    public String getDate() {
-        return date;
-    }
 
-    public String getHigh() {
-        return high;
-    }
 
-    public String getLow() {
-        return low;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    
 
     public void setCity(String city) {
         this.city = city;

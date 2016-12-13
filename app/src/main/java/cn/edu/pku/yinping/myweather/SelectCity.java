@@ -38,7 +38,6 @@ public class SelectCity extends Activity implements View.OnClickListener{
 
         InitCityList();
 
-
     }
 
     private void InitCityList(){
@@ -57,10 +56,11 @@ public class SelectCity extends Activity implements View.OnClickListener{
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(SelectCity.this,android.R.layout.simple_list_item_1, cityNameList);
         cityList.setAdapter(adapter);
         //click
-        cityList.setOnItemClickListener(new AdapterView.OnItemClickListener(){ @Override
+        cityList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            Toast.makeText(SelectCity.this, "Clicked"+ i, Toast.LENGTH_SHORT).show();
             selectedCityCode = cityNumberList[i];
+                Toast.makeText(SelectCity.this, "Clicked"+ selectedCityCode, Toast.LENGTH_SHORT).show();
 
             back();
         }
@@ -79,11 +79,10 @@ public class SelectCity extends Activity implements View.OnClickListener{
 
     }
 
-    private void back(){
+    public void back(){
         Intent i = new Intent(this, MainActivity.class);
-        i.putExtra("cityCode", "selectedCityCode");
+        i.putExtra("cityCode", selectedCityCode);
         setResult(RESULT_OK, i);
-
         finish();
     }
 
