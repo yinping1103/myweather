@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/biz_plugin_weather_qing" />
+            android:src="@drawable/biz_plugin_weather_duoyun" />
 
         <TextView
             android:id="@+id/week_today1"
@@ -34,7 +34,7 @@
             android:layout_below="@id/week_today1"
             android:layout_marginLeft="25.0dp"
             android:singleLine="true"
-            android:text=" -2℃~7℃"
+            android:text=" -5℃~1℃"
             android:textColor="@android:color/white"
             android:textSize="18.0sp"/>
 
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:layout_marginLeft="25.0dp"
-            android:text=" 多云转晴"
+            android:text=" 多云"
             android:textColor="@android:color/white"
             android:textSize="18.0sp"
             android:layout_below="@+id/temperature1"
@@ -61,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/biz_plugin_weather_qing" />
+            android:src="@drawable/biz_plugin_weather_wu" />
 
         <TextView
             android:id="@+id/week_today2"
@@ -70,7 +70,7 @@
             android:layout_below="@id/weather_img2"
             android:layout_marginLeft="25.0dp"
             android:singleLine="true"
-            android:text="多云转晴"
+            android:text="雾"
             android:textColor="@android:color/white"
             android:textSize="18.0sp"/>
         <TextView
@@ -80,7 +80,7 @@
             android:layout_below="@id/week_today2"
             android:layout_marginLeft="25.0dp"
             android:singleLine="true"
-            android:text=" -2℃~7℃"
+            android:text=" -2℃~3℃"
             android:textColor="@android:color/white"
             android:textSize="18.0sp"/>
 
@@ -91,7 +91,7 @@
             android:singleLine="true"
             android:layout_marginLeft="25.0dp"
             android:layout_below="@+id/temperature2"
-            android:text=" 星期三"
+            android:text=" 星期四"
             android:textColor="@android:color/white"
             android:textSize="18.0sp"
             />
@@ -108,7 +108,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/biz_plugin_weather_qing" />
+            android:src="@drawable/biz_plugin_weather_yin" />
 
         <TextView
             android:id="@+id/week_today3"
@@ -117,7 +117,7 @@
             android:layout_below="@id/weather_img3"
             android:layout_marginLeft="25.0dp"
             android:singleLine="true"
-            android:text="多云转晴"
+            android:text="阴"
             android:textColor="@android:color/white"
             android:textSize="18.0sp"/>
         <TextView
@@ -127,7 +127,7 @@
             android:layout_below="@id/week_today3"
             android:layout_marginLeft="25.0dp"
             android:singleLine="true"
-            android:text=" -2℃~7℃"
+            android:text=" -5℃~2℃"
             android:textColor="@android:color/white"
             android:textSize="18.0sp"/>
 

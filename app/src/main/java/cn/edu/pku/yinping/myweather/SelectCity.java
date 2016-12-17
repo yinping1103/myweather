@@ -3,9 +3,12 @@ package cn.edu.pku.yinping.myweather;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -26,17 +29,22 @@ public class SelectCity extends Activity implements View.OnClickListener{
     private String[] cityNameList;
     private String[] cityNumberList;
     private String selectedCityCode;
+    private String selectedCity;
+//    new
+    private EditText sEdit;
+    private ImageView sDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.select_city);
-
         mBackBtn = (ImageView) findViewById(R.id.title_back);
+        sEdit = (EditText) findViewById(R.id.search_edit);
+        sDelete = (ImageView) findViewById(R.id.search_delete);
         mBackBtn.setOnClickListener(this);
-
+        sDelete.setOnClickListener(this);
         InitCityList();
+        set_sEdit_TextChanged();
 
     }
 
@@ -53,30 +61,30 @@ public class SelectCity extends Activity implements View.OnClickListener{
         cityNumberList = (String[])cn2.toArray(new String[cn2.size()]);
 
         cityList = (ListView)findViewById(R.id.selection_list);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(SelectCity.this,android.R.layout.simple_list_item_1, cityNameList);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(SelectCity.this,android.R.layout.simple_list_item_1, cityNameList);
         cityList.setAdapter(adapter);
         //click
         cityList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
-        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            selectedCityCode = cityNumberList[i];
-                Toast.makeText(SelectCity.this, "Clicked"+ selectedCityCode, Toast.LENGTH_SHORT).show();
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedCityCode = cityNumberList[i];
+                selectedCity = cityNameList[i];
+                Toast.makeText(SelectCity.this, "您选择了"+ selectedCity, Toast.LENGTH_SHORT).show();
 
-            back();
-        }
+                back();
+            }
         });
     }
 
 
-    public void onClick(View v){
-        switch (v.getId()){
-            case R.id.title_back:
-                back();
-                break;
-            default:
-                break;
+    public void onClick(View view){
+        if (view.getId() == R.id.search_delete){
+            sEdit.setText("");
         }
-
+        if (view.getId() == R.id.title_back){
+            Intent i = new Intent(this, MainActivity.class);
+            finish();
+        }
     }
 
     public void back(){
@@ -85,5 +93,34 @@ public class SelectCity extends Activity implements View.OnClickListener{
         setResult(RESULT_OK, i);
         finish();
     }
+
+
+    public void set_sEdit_TextChanged() {
+
+        sEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+                // TODO Auto-generated method stub
+            }
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+                // TODO Auto-generated method stub
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+
+                if (s.length() == 0) {
+                    sDelete.setVisibility(View.GONE);//当文本框为空时，则叉叉消失
+                } else {
+                    sDelete.setVisibility(View.VISIBLE);//当文本框不为空时，出现叉叉
+                }
+            }
+        });
+
+    }
+
+
+
 
 }

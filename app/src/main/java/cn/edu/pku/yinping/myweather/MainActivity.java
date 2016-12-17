@@ -50,6 +50,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private TextView cityTv, timeTv, humidityTv, temperature_nowTv, weekTv, pmDataTv,
             pmQualityTv, temperatureTv, climateTv, windTv, city_name_Tv,
             weekTv1, climateTv1, temperatureTv1;
+            ImageView weatherImg1;
     private ImageView weatherImg, pmImg;
 
     private Handler mHandler = new Handler() {
@@ -79,7 +80,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             Log.d("myweather", "网络OK");
             Toast.makeText(MainActivity.this, "网络OK", Toast.LENGTH_LONG).show();
         } else {
-            Log.d("myweather", "网络挂了");
+            Log.d("myweather", "Wrong Network");
             Toast.makeText(MainActivity.this, "网络挂了", Toast.LENGTH_LONG).show();
         }
 
@@ -87,7 +88,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mCitySelect.setOnClickListener(this);
 
         initView();
-        initView_week();
+//        initView_week();
 
     }
 
@@ -108,28 +109,30 @@ public class MainActivity extends Activity implements View.OnClickListener {
         windTv = (TextView) findViewById(R.id.wind);
         weatherImg = (ImageView) findViewById(R.id.weather_img);
 
-        city_name_Tv.setText("N/A");
-        cityTv.setText("N/A");
-        timeTv.setText("N/A");
-        humidityTv.setText("N/A");
-        temperature_nowTv.setText("N/A");
-        pmDataTv.setText("N/A");
-        pmQualityTv.setText("N/A");
-        weekTv.setText("N/A");
-        temperatureTv.setText("N/A");
-        climateTv.setText("N/A");
-        windTv.setText("N/A");
+        city_name_Tv.setText("北京天气");
+        cityTv.setText("北京");
+        timeTv.setText("16：00发布");
+        humidityTv.setText("湿度：74%");
+        temperature_nowTv.setText("当前温度 1°");
+        pmDataTv.setText("121");
+        pmQualityTv.setText("轻度污染");
+        weekTv.setText("20日星期二");
+        temperatureTv.setText("高温 4°~ 低温 -2°");
+        climateTv.setText("晴");
+        windTv.setText("东风：1级");
     }
 
-    void initView_week() {
-        weekTv1 = (TextView) findViewById(R.id.week_today1);
-        climateTv1 = (TextView) findViewById(R.id.climate1);
-        temperatureTv1 = (TextView) findViewById(R.id.temperature1);
-
-        weekTv1.setText("N/A");
-        climateTv1.setText("N/A");
-        temperatureTv1.setText("N/A");
-    }
+//    void initView_week() {
+//        weekTv1 = (TextView) findViewById(R.id.week_today1);
+//        climateTv1 = (TextView) findViewById(R.id.climate1);
+//        temperatureTv1 = (TextView) findViewById(R.id.temperature1);
+//        weatherImg1 = (ImageView) findViewById(R.id.weather_img1);
+//
+//        weekTv1.setText("21日星期三");
+//        climateTv1.setText("多云");
+//        temperatureTv1.setText("高温 2°~ 低温 -6°");
+//        weatherImg1.setImageResource(R.drawable.biz_plugin_weather_duoyun);
+//    }
 
 
     @Override
@@ -160,7 +163,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         }
     }
-
+//  接收返回的数据
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1 && resultCode == RESULT_OK) {
             String newCityCode= data.getStringExtra("cityCode");
@@ -331,18 +334,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
 //    加载页面信息，数据可视化
-    void updateTodayWeather(TodayWeather todayWeather) {
+    public void updateTodayWeather(TodayWeather todayWeather) {
         city_name_Tv.setText(todayWeather.getCity() + "天气");
         cityTv.setText(todayWeather.getCity());
         timeTv.setText(todayWeather.getUpdatetime() + "发布");
         humidityTv.setText("湿度：" + todayWeather.getShidu());
-        temperature_nowTv.setText("当前温度：" +todayWeather.getWendu());
+        temperature_nowTv.setText("当前温度：" +todayWeather.getWendu()+"°");
         pmDataTv.setText(todayWeather.getPm25());
         pmQualityTv.setText(todayWeather.getQuality());
 
         if(todayWeather.getPm25() == null){
-            pmDataTv.setText("68");
-            pmQualityTv.setText("良");
+            pmDataTv.setText("No Numbers");
+            pmQualityTv.setText("无信息");
             pmImg.setImageResource(R.drawable.biz_plugin_weather_51_100);
         }
         if(todayWeather.getPm25() != null){

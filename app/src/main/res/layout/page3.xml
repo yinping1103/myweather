@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:gravity="center_horizontal"
-        android:paddingBottom="50dp"
+        android:paddingBottom="40dp"
         android:weightSum="1">
 
         <Button

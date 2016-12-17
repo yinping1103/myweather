@@ -19,6 +19,8 @@ import cn.edu.pku.yinping.db.CityDB;
  * Created by ag on 01/11/2016.
  */
 
+//建立打开数据库的方法并打开数据库，初始化列表 getCityList,返回mCityList
+
 public class MyApplication extends Application{
     private static final String TAG = "MyAPP";
 
@@ -47,8 +49,6 @@ public class MyApplication extends Application{
         }).start();
     }
 
-
-
     private boolean prepareCityList() {
         mCityList = mCityDB.getAllCity();
         int i=0;
@@ -65,7 +65,6 @@ public class MyApplication extends Application{
     public List<City> getCityList() {
         return mCityList;
     }
-
 
 
     public static MyApplication getInstance(){

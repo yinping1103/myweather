@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#b9b9b9">
 
 
     <RelativeLayout
@@ -35,13 +36,59 @@
             android:gravity="center" />
     </RelativeLayout>
 
-    <EditText
+    <RelativeLayout android:id="@+id/top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:background="#b9b9b9">
+
+        <RelativeLayout android:id="@+id/search_bar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical">
+
+            <EditText android:id="@+id/search_edit"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:singleLine="true"
+                android:drawableLeft="@drawable/magnifying_glass"
+                android:background="@drawable/contact_search_box_edittext_keyword_background"
+                android:paddingBottom="8dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="30dp"
+                android:paddingTop="8dp"
+                android:imeOptions="actionSearch"
+                android:textSize="16sp"
+                android:hint="请输入城市名称"
+                android:textColorHint="#ffaaaaaa"
+                android:textColor="#ff000000"/>
+
+            <ImageView android:id="@+id/search_delete"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="20dp"
+                android:src="@drawable/delete"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <!--<EditText-->
         android:id="@+id/search_edit"
         android:layout_width="match_parent"
         android:layout_height="46dp"
         android:hint="搜索全国城市（中文）"
         android:layout_margin="10dp"
         android:drawableLeft="@drawable/magnifying_glass"
+        android:drawableRight="@drawable/delete"
         android:drawablePadding="10dp"
         android:paddingBottom="8dp"
         android:paddingLeft="10dp"
@@ -57,7 +104,6 @@
         android:id="@+id/selection_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
     </ListView>
 
 
