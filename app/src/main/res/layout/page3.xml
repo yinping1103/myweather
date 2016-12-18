@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:background="#66000000"
             android:text="开始体验"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:layout_weight="0.1" />
     </LinearLayout>
 

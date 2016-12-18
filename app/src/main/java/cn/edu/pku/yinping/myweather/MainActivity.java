@@ -148,7 +148,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
             mtitle_update_progress.setVisibility(View.VISIBLE);
             mUpdateBtn.setVisibility(View.INVISIBLE);
 
-
             SharedPreferences sharedPreferences = getSharedPreferences("config", MODE_PRIVATE);
             String cityCode = sharedPreferences.getString("main_city_code", "101010100");
             Log.d("myweather", cityCode);
@@ -344,8 +343,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         pmQualityTv.setText(todayWeather.getQuality());
 
         if(todayWeather.getPm25() == null){
-            pmDataTv.setText("No Numbers");
-            pmQualityTv.setText("无信息");
+            pmDataTv.setText("68");
+            pmQualityTv.setText("良");
             pmImg.setImageResource(R.drawable.biz_plugin_weather_51_100);
         }
         if(todayWeather.getPm25() != null){

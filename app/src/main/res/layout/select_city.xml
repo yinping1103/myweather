@@ -15,7 +15,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:gravity="center"
-            android:text="当前城市：北京"
+            android:text="选择城市"
             android:textColor="#ffffffff"
             android:textSize="20.0dip" />
         <ImageView
@@ -39,10 +39,10 @@
     <RelativeLayout android:id="@+id/top"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="#b9b9b9">
 
         <RelativeLayout android:id="@+id/search_bar"
@@ -51,14 +51,14 @@
             android:layout_centerVertical="true"
             android:gravity="center_vertical">
 
+
             <EditText android:id="@+id/search_edit"
                 android:layout_width="fill_parent"
-                android:layout_height="50dp"
+                android:layout_height="45dp"
                 android:singleLine="true"
-                android:drawableLeft="@drawable/magnifying_glass"
                 android:background="@drawable/contact_search_box_edittext_keyword_background"
                 android:paddingBottom="8dp"
-                android:paddingLeft="10dp"
+                android:paddingLeft="50dp"
                 android:paddingRight="30dp"
                 android:paddingTop="8dp"
                 android:imeOptions="actionSearch"
@@ -68,37 +68,26 @@
                 android:textColor="#ff000000"/>
 
             <ImageView android:id="@+id/search_delete"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:paddingRight="20dp"
+                android:paddingRight="10dp"
                 android:src="@drawable/delete"
                 android:visibility="gone"/>
+
+            <ImageView android:id="@+id/magnifying_glass"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:paddingLeft="15dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/magnifying_glass" />
 
         </RelativeLayout>
 
     </RelativeLayout>
 
 
-    <!--<EditText-->
-        android:id="@+id/search_edit"
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:hint="搜索全国城市（中文）"
-        android:layout_margin="10dp"
-        android:drawableLeft="@drawable/magnifying_glass"
-        android:drawableRight="@drawable/delete"
-        android:drawablePadding="10dp"
-        android:paddingBottom="8dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="30dp"
-        android:paddingTop="8dp"
-        android:singleLine="true"
-        android:background="@drawable/contact_search_box_edittext_keyword_background"
-        android:textColor="#ff000000"
-        android:textColorHint="#ffcccccc"
-        android:textSize="16sp"/>
 
     <ListView
         android:id="@+id/selection_list"

@@ -2,7 +2,9 @@ package cn.edu.pku.yinping.myweather;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -11,12 +13,14 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.edu.pku.yinping.app.MyApplication;
+import cn.edu.pku.yinping.bean.City;
 
 /**
  * Created by ag on 10/18/16.
@@ -25,51 +29,56 @@ import cn.edu.pku.yinping.app.MyApplication;
 public class SelectCity extends Activity implements View.OnClickListener{
 
     private ImageView mBackBtn;
-    private ListView cityList;
-    private String[] cityNameList;
-    private String[] cityNumberList;
+    private ListView cityListview;
+    private ArrayList<String> cityNameList;
+    private ArrayList<String> cityNumberList;
+    private ArrayList<String> show_List;
+    private ArrayList<String> new_List;
     private String selectedCityCode;
     private String selectedCity;
 //    new
     private EditText sEdit;
     private ImageView sDelete;
+    private ArrayAdapter<String> adapter; List<City> cityList;
+    private Handler myhandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_city);
         mBackBtn = (ImageView) findViewById(R.id.title_back);
-        sEdit = (EditText) findViewById(R.id.search_edit);
-        sDelete = (ImageView) findViewById(R.id.search_delete);
         mBackBtn.setOnClickListener(this);
+        sDelete = (ImageView) findViewById(R.id.search_delete);
         sDelete.setOnClickListener(this);
-        InitCityList();
+        cityNameList = new ArrayList<String>();
+        cityNumberList = new ArrayList<String>();
+        show_List = new ArrayList<String>();
+        new_List = new ArrayList<String>();
         set_sEdit_TextChanged();
-
+        InitCityList();
     }
 
     private void InitCityList(){
         MyApplication myApp = (MyApplication)this.getApplication();
-        int l = myApp.getCityList().size();
-        List<String> cn = new ArrayList<String>();
-        List<String> cn2 = new ArrayList<String>();
-        for (int i = 0; i < l; ++i){
-            cn.add(myApp.getCityList().get(i).getCity());
-            cn2.add(myApp.getCityList().get(i).getNumber());
+        cityList = myApp.getCityList();
+        for (int i = 0; i < cityList.size(); i++){
+            cityNameList.add(cityList.get(i).getCity().toString());
+            cityNumberList.add(cityList.get(i).getNumber().toString());
+            String s = cityList.get(i).getNumber().toString()+"-"+cityList.get(i).getCity().toString();
+            show_List.add(s);
+            new_List.add(s);
         }
-        cityNameList = (String[])cn.toArray(new String[cn.size()]);
-        cityNumberList = (String[])cn2.toArray(new String[cn2.size()]);
 
-        cityList = (ListView)findViewById(R.id.selection_list);
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(SelectCity.this,android.R.layout.simple_list_item_1, cityNameList);
-        cityList.setAdapter(adapter);
-        //click
-        cityList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        cityListview = (ListView)findViewById(R.id.selection_list);
+        adapter = new ArrayAdapter<String>(SelectCity.this,android.R.layout.simple_list_item_1, new_List);
+        cityListview.setAdapter(adapter);
+        cityListview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                selectedCityCode = cityNumberList[i];
-                selectedCity = cityNameList[i];
-                Toast.makeText(SelectCity.this, "您选择了"+ selectedCity, Toast.LENGTH_SHORT).show();
+                selectedCityCode = new_List.get(i).substring(0,9);
+                selectedCity = new_List.get(i).substring(10);
+
+                Toast.makeText(SelectCity.this, selectedCity +"天气", Toast.LENGTH_SHORT).show();
 
                 back();
             }
@@ -91,36 +100,66 @@ public class SelectCity extends Activity implements View.OnClickListener{
         Intent i = new Intent(this, MainActivity.class);
         i.putExtra("cityCode", selectedCityCode);
         setResult(RESULT_OK, i);
+
+        SharedPreferences mySharedPreferences = getSharedPreferences("config", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = mySharedPreferences.edit();
+        editor.putString("main_city_code",selectedCityCode );
+        editor.commit();
+
         finish();
+
     }
 
 
-    public void set_sEdit_TextChanged() {
-
+    private void set_sEdit_TextChanged() {
+        sEdit = (EditText) findViewById(R.id.search_edit);
         sEdit.addTextChangedListener(new TextWatcher() {
+
             @Override
             public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
                 // TODO Auto-generated method stub
             }
+
             @Override
             public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
                 // TODO Auto-generated method stub
             }
+
             @Override
             public void afterTextChanged(Editable s) {
                 // TODO Auto-generated method stub
+                myhandler.post(eChanged);
 
                 if (s.length() == 0) {
-                    sDelete.setVisibility(View.GONE);//当文本框为空时，则叉叉消失
+                    sDelete.setVisibility(View.GONE);
                 } else {
-                    sDelete.setVisibility(View.VISIBLE);//当文本框不为空时，出现叉叉
+                    sDelete.setVisibility(View.VISIBLE);
                 }
             }
         });
 
     }
 
+    Runnable eChanged = new Runnable() {
+        @Override
+        public void run() {
+            String s_data = sEdit.getText().toString();
+            new_List.clear();
+            getnew_ListSub(new_List, s_data);
+            adapter.notifyDataSetChanged();
+        }
+    };
 
+    private void getnew_ListSub(ArrayList<String> new_ListSubs, String s_data){
+        int l = show_List.size();
+        for (int i = 0; i < l; ++i){
+            if (show_List.get(i).contains(s_data)){
+                String item = show_List.get(i);
+                new_ListSubs.add(item);
+            }
+        }
+
+    }
 
 
 }
