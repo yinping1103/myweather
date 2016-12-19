@@ -133,6 +133,13 @@
         </RelativeLayout>
 
         <!--今日天气详情界面-->
+        <TextView
+            android:id="@+id/location_result"
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
         <RelativeLayout
             android:id="@+id/weather_today_information"
             android:layout_width="match_parent"
