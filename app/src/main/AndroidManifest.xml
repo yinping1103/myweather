@@ -48,15 +48,17 @@
         <activity android:name=".Guide">
         </activity>
 
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="GnlqsMEi3jNqRIDIVteOgS8XGjV21qd6" />
+
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote">
         </service>
 
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="OnFFZR2YAzUGKFmeb0t3t0tccgc1l3Il" />
+
 
     </application>
 

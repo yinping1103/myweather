@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'Key'
+            keyPassword '201181n'
+            storeFile file('/Users/ag/Key.store.jks')
+            storePassword '201181n'
+        }
+    }
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
     defaultConfig {
@@ -9,8 +17,9 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
-//        ndk { //选择要添加的对应cpu类型的.so库。
-//             abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a', 'x86', 'x86_64'}
+        ndk { //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a', 'x86', 'x86_64'
+        }
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -19,7 +28,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
