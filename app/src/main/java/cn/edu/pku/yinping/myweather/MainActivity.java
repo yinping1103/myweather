@@ -138,10 +138,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
         temperature_nowTv.setText("当前温度 1°");
         pmDataTv.setText("121");
         pmQualityTv.setText("轻度污染");
-        weekTv.setText("20日星期二");
+        weekTv.setText("星期二");
         temperatureTv.setText("-4° ~ 5°");
         climateTv.setText("晴");
-        windTv.setText("东风：1级");
+        windTv.setText("东风 1级");
     }
     void initView_week() {
         weekTv1 = (TextView) findViewById(R.id.week_today1);
@@ -161,17 +161,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
         windTv3 = (TextView) findViewById(R.id.wind3);
 
 
-        weekTv1.setText("22日星期四");
+        weekTv1.setText("星期四");
         weatherImg1.setImageResource(R.drawable.biz_plugin_weather_duoyun);
         temperatureTv1.setText("-2° ~ 6°");
         climateTv1.setText("多云");
         windTv1.setText("南风 1级");
-        weekTv2.setText("23日星期五");
+        weekTv2.setText("星期五");
         weatherImg2.setImageResource(R.drawable.biz_plugin_weather_duoyun);
         temperatureTv2.setText("-2° ~  -4°");
         climateTv2.setText("阴");
         windTv2.setText("北风 2级");
-        weekTv3.setText("24日星期六");
+        weekTv3.setText("星期六");
         weatherImg3.setImageResource(R.drawable.biz_plugin_weather_duoyun);
         temperatureTv3.setText("-4° ~ 3°");
         climateTv3.setText("多云转晴");
@@ -591,8 +591,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         weekTv.setText("今天 "+todayWeather.getDate().substring(l));
         climateTv.setText(todayWeather.getType());
         temperatureTv.setText(todayWeather.getLow().substring(2)+ " ~"+todayWeather.getHigh().substring(2));
-        if (todayWeather.getFengxiang() == "无持续风向"){
-            windTv.setText(todayWeather.getFengli1());
+        if (todayWeather.getFengxiang().equals("无持续风向") ){
+            windTv.setText(todayWeather.getFengli());
         }else windTv.setText(todayWeather.getFengxiang()+" "+todayWeather.getFengli());
         Toast.makeText(MainActivity.this, "更新成功！", Toast.LENGTH_SHORT).show();
         switch (todayWeather.getType())
@@ -665,8 +665,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         weekTv1.setText(todayWeather.getDate1().substring(l1));
         temperatureTv1.setText(todayWeather.getLow1().substring(2)+" ~"+ todayWeather.getHigh1().substring(2));
         climateTv1.setText(todayWeather.getType1());
-        if (todayWeather.getFengxiang1() == "无持续风向"){
+        if (todayWeather.getFengxiang1().equals( "无持续风向")){
             windTv1.setText(todayWeather.getFengli1());
+            Log.i("无持续风向","yes");
         }else windTv1.setText(todayWeather.getFengxiang1()+" "+todayWeather.getFengli1());
 
         switch (todayWeather.getType1())
@@ -738,8 +739,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         weekTv2.setText(todayWeather.getDate2().substring(l2));
         temperatureTv2.setText(todayWeather.getLow2().substring(2)+" ~"+ todayWeather.getHigh2().substring(2));
         climateTv2.setText(todayWeather.getType2());
-        if (todayWeather.getFengxiang2() == "无持续风向"){
+        if (todayWeather.getFengxiang2().equals( "无持续风向")){
             windTv2.setText(todayWeather.getFengli2());
+            Log.i("无持续风向","yes");
         }else windTv2.setText(todayWeather.getFengxiang2()+" "+todayWeather.getFengli2());
         switch (todayWeather.getType2())
         {
@@ -811,8 +813,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         weekTv3.setText(todayWeather.getDate3().substring(l3));
         temperatureTv3.setText(todayWeather.getLow3().substring(2)+" ~"+ todayWeather.getHigh3().substring(2));
         climateTv3.setText(todayWeather.getType3());
-        if (todayWeather.getFengxiang3() == "无持续风向"){
+        if (todayWeather.getFengxiang3().equals( "无持续风向")){
             windTv3.setText(todayWeather.getFengli3());
+            Log.i("无持续风向","yes");
         }else windTv3.setText(todayWeather.getFengxiang3()+" "+todayWeather.getFengli3());
         switch (todayWeather.getType3())
         {
