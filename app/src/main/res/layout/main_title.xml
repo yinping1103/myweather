@@ -8,7 +8,7 @@
         android:id="@+id/title"
         android:layout_width="fill_parent"
         android:layout_height="45dp"
-        android:background="#ffcd2626"
+        android:background="#f45e00"
         android:gravity="center_vertical">
 
         <ImageView
@@ -22,7 +22,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="2dp"
             android:layout_toRightOf="@id/title_city_manager"
-            android:background="#A71717"/>
+            android:background="#a74217"/>
         <TextView
             android:id="@+id/title_city_name"
             android:layout_width="fill_parent"
