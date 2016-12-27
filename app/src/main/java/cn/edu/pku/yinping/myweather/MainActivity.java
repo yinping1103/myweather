@@ -138,6 +138,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         temperature_nowTv.setText("当前温度 1°");
         pmDataTv.setText("121");
         pmQualityTv.setText("轻度污染");
+        pmImg.setImageResource(R.drawable.biz_plugin_weather_101_150);
         weekTv.setText("星期二");
         temperatureTv.setText("-4° ~ 5°");
         climateTv.setText("晴");
